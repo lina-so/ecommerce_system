@@ -18,7 +18,7 @@ class ReplayFactory extends Factory
     {
         return [
 
-            'replay' => $faker->realText(500),
+            'replay' => $this->faker->realText(500),
         ];
     }
 }

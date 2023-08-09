@@ -20,8 +20,8 @@ class ProductFactory extends Factory
     {
         return [
 
-                'quantity' => $faker->numberBetween(1, 100),
-                'price' => $faker->randomFloat(2),
+                'quantity' => $this->faker->numberBetween(1, 100),
+                'price' => $this->faker->randomFloat(2),
                 'classification_id' => Classification::inRandomOrder()->first()?->id,
                 'vendor_id' => Vendor::inRandomOrder()->first()?->id,
 

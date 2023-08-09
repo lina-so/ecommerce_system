@@ -17,9 +17,9 @@ class PromotionFactory extends Factory
     public function definition(): array
     {
         return [
-            'discount_rate' => $faker->numberBetween(1, 100),
-            'start_date' => $faker->date(),
-            'end_date' => $faker->date(),
+            'discount_rate' => $this->faker->numberBetween(1, 100),
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
         ];
     }
 }

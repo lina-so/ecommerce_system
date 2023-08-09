@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Favoraite;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class FavoraiteSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class FavoraiteSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Favoraite::factory(100)->create();
+
     }
 }

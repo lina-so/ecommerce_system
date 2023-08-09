@@ -15,10 +15,10 @@ class Customer extends Model
 
     protected $fillable = ['name'];
 
-    public function userable()
-    {
-        return $this->morphMany(Person::class, 'userable');
-    }
+    // public function userable()
+    // {
+    //     return $this->morphMany(Person::class, 'userable');
+    // }
 
     public function carts()
     {

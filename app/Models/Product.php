@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Option;
 use App\Models\Vendor;
 use App\Models\Customer;
+use App\Models\Favoraite;
 use App\Models\OrderProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -35,6 +36,10 @@ class Product extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
+    public function favoritable()
+    {
+        return $this->morphMany(Favoraite::class, 'favoritable');
+    }
 
 
 }

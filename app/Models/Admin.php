@@ -10,8 +10,8 @@ class Admin extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
-    public function userable()
-    {
-        return $this->morphMany(Person::class, 'userable');
-    }
+    // public function userable()
+    // {
+    //     return $this->morphMany(Person::class, 'userable');
+    // }
 }
