@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin;
 use App\Models\Option;
 use App\Models\Vendor;
 use App\Models\Customer;
@@ -29,6 +30,11 @@ class Product extends Model
     public function vendor()
     {
         return $this->belongsTo(Vendor::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 
     public function orderProduct()
