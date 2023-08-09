@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            LaratrustSeeder::class,
             UserSeeder::class,
             AdminSeeder::class,
             CartSeeder::class,
@@ -35,8 +36,6 @@ class DatabaseSeeder extends Seeder
             RatingValueSeeder::class,
             ReplaySeeder::class,
             VendorSeeder::class,
-
-
         ]);
     }
 }

@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Customer;
 use App\Models\Favoraite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
