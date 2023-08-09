@@ -16,4 +16,8 @@ class Favoraite extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+    public function favoritable()
+    {
+        return $this->morphTo('favoritable');
+    }
 }

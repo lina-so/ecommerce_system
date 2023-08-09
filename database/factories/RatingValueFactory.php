@@ -18,7 +18,7 @@ class RatingValueFactory extends Factory
     {
         return [
 
-            'rating_value' => $faker->numberBetween(1, 5),
+            'rating_value' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

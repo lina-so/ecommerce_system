@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Vendor;
 use App\Models\Classification;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,10 +21,12 @@ class ProductFactory extends Factory
     {
         return [
 
-                'quantity' => $faker->numberBetween(1, 100),
-                'price' => $faker->randomFloat(2),
+                'quantity' => $this->faker->numberBetween(1, 100),
+                'price' => $this->faker->randomFloat(2),
                 'classification_id' => Classification::inRandomOrder()->first()?->id,
                 'vendor_id' => Vendor::inRandomOrder()->first()?->id,
+                'admin_id' => Admin::inRandomOrder()->first()?->id,
+
 
 
                 // تعريف الحقول العادية هنا

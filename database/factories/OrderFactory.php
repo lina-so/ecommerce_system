@@ -19,9 +19,9 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_date' => $faker->date,
-            'total_order_price' => $faker->randomFloat(2),
-            'order_status' => $faker->randomElement(['success', 'pending', 'fail']),
+            'order_date' => $this->faker->date,
+            'total_order_price' => $this->faker->randomFloat(2),
+            'order_status' => $this->faker->randomElement(['success', 'pending', 'fail']),
             'payment_method_id' => PaymentMethod::inRandomOrder()->first()?->id,
             'customer_id' => Customer::inRandomOrder()->first()?->id,
 

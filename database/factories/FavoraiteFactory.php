@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,8 +19,9 @@ class FavoraiteFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_name' => $this->faker->word(),
             'customer_id' => Customer::inRandomOrder()->first()?->id,
+            'favoritable_id' => Product::inRandomOrder()->first()?->id,
+            'favoritable_type' => Product::class,
         ];
     }
 }

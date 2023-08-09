@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('favoraites', function (Blueprint $table) {
             $table->id();
-            $table->string('product_name');
+            $table->morphs('favoritable');
             $table->foreignIdFor(Customer::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
