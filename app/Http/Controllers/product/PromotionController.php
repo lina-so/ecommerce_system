@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\Favoraite;
-use App\Http\Requests\StoreFavoraiteRequest;
-use App\Http\Requests\UpdateFavoraiteRequest;
+use App\Models\Promotion;
+use App\Http\Requests\StorePromotionRequest;
+use App\Http\Requests\UpdatePromotionRequest;
+use App\Http\Controllers\Controller;
 
-class FavoraiteController extends Controller
+class PromotionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class FavoraiteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFavoraiteRequest $request)
+    public function store(StorePromotionRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class FavoraiteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Favoraite $favoraite)
+    public function show(Promotion $promotion)
     {
         //
     }
@@ -43,7 +44,7 @@ class FavoraiteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Favoraite $favoraite)
+    public function edit(Promotion $promotion)
     {
         //
     }
@@ -51,7 +52,7 @@ class FavoraiteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFavoraiteRequest $request, Favoraite $favoraite)
+    public function update(UpdatePromotionRequest $request, Promotion $promotion)
     {
         //
     }
@@ -59,7 +60,7 @@ class FavoraiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Favoraite $favoraite)
+    public function destroy(Promotion $promotion)
     {
         //
     }

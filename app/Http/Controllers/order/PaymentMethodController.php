@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\order;
 
-use App\Models\Like;
-use App\Http\Requests\StoreLikeRequest;
-use App\Http\Requests\UpdateLikeRequest;
+use App\Models\PaymentMethod;
+use App\Http\Requests\StorePaymentMethodRequest;
+use App\Http\Requests\UpdatePaymentMethodRequest;
+use App\Http\Controllers\Controller;
 
-class LikeController extends Controller
+class PaymentMethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class LikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLikeRequest $request)
+    public function store(StorePaymentMethodRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class LikeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Like $like)
+    public function show(PaymentMethod $paymentMethod)
     {
         //
     }
@@ -43,7 +44,7 @@ class LikeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Like $like)
+    public function edit(PaymentMethod $paymentMethod)
     {
         //
     }
@@ -51,7 +52,7 @@ class LikeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLikeRequest $request, Like $like)
+    public function update(UpdatePaymentMethodRequest $request, PaymentMethod $paymentMethod)
     {
         //
     }
@@ -59,7 +60,7 @@ class LikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Like $like)
+    public function destroy(PaymentMethod $paymentMethod)
     {
         //
     }

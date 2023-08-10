@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\Value;
-use App\Http\Requests\StoreValueRequest;
-use App\Http\Requests\UpdateValueRequest;
 
-class ValueController extends Controller
+use App\Models\Product;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Http\Controllers\Controller;
+
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ValueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreValueRequest $request)
+    public function store(StoreProductRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ValueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Value $value)
+    public function show(Product $product)
     {
         //
     }
@@ -43,7 +45,7 @@ class ValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Value $value)
+    public function edit(Product $product)
     {
         //
     }
@@ -51,7 +53,7 @@ class ValueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateValueRequest $request, Value $value)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         //
     }
@@ -59,7 +61,7 @@ class ValueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Value $value)
+    public function destroy(Product $product)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\location;
 
-use App\Models\Rate;
-use App\Http\Requests\StoreRateRequest;
-use App\Http\Requests\UpdateRateRequest;
+use App\Models\City;
+use App\Http\Requests\StoreCityRequest;
+use App\Http\Requests\UpdateCityRequest;
+use App\Http\Controllers\Controller;
 
-class RateController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class RateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRateRequest $request)
+    public function store(StoreCityRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class RateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Rate $rate)
+    public function show(City $city)
     {
         //
     }
@@ -43,7 +44,7 @@ class RateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rate $rate)
+    public function edit(City $city)
     {
         //
     }
@@ -51,7 +52,7 @@ class RateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRateRequest $request, Rate $rate)
+    public function update(UpdateCityRequest $request, City $city)
     {
         //
     }
@@ -59,7 +60,7 @@ class RateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rate $rate)
+    public function destroy(City $city)
     {
         //
     }

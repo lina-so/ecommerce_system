@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\rate;
 
-use App\Models\OptionValue;
-use App\Http\Requests\StoreOptionValueRequest;
-use App\Http\Requests\UpdateOptionValueRequest;
+use App\Models\Like;
+use App\Http\Requests\StoreLikeRequest;
+use App\Http\Requests\UpdateLikeRequest;
+use App\Http\Controllers\Controller;
 
-class OptionValueController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class OptionValueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOptionValueRequest $request)
+    public function store(StoreLikeRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class OptionValueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OptionValue $optionValue)
+    public function show(Like $like)
     {
         //
     }
@@ -43,7 +44,7 @@ class OptionValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OptionValue $optionValue)
+    public function edit(Like $like)
     {
         //
     }
@@ -51,7 +52,7 @@ class OptionValueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOptionValueRequest $request, OptionValue $optionValue)
+    public function update(UpdateLikeRequest $request, Like $like)
     {
         //
     }
@@ -59,7 +60,7 @@ class OptionValueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OptionValue $optionValue)
+    public function destroy(Like $like)
     {
         //
     }

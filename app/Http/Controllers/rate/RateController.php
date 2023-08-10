@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\rate;
 
-use App\Models\Promotion;
-use App\Http\Requests\StorePromotionRequest;
-use App\Http\Requests\UpdatePromotionRequest;
+use App\Models\Rate;
+use App\Http\Requests\StoreRateRequest;
+use App\Http\Requests\UpdateRateRequest;
+use App\Http\Controllers\Controller;
 
-class PromotionController extends Controller
+class RateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class PromotionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePromotionRequest $request)
+    public function store(StoreRateRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class PromotionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Promotion $promotion)
+    public function show(Rate $rate)
     {
         //
     }
@@ -43,7 +44,7 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Promotion $promotion)
+    public function edit(Rate $rate)
     {
         //
     }
@@ -51,7 +52,7 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePromotionRequest $request, Promotion $promotion)
+    public function update(UpdateRateRequest $request, Rate $rate)
     {
         //
     }
@@ -59,7 +60,7 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Promotion $promotion)
+    public function destroy(Rate $rate)
     {
         //
     }

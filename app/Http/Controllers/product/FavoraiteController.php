@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\City;
-use App\Http\Requests\StoreCityRequest;
-use App\Http\Requests\UpdateCityRequest;
 
-class CityController extends Controller
+use App\Models\Favoraite;
+use App\Http\Requests\StoreFavoraiteRequest;
+use App\Http\Requests\UpdateFavoraiteRequest;
+use App\Http\Controllers\Controller;
+
+class FavoraiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class CityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCityRequest $request)
+    public function store(StoreFavoraiteRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(City $city)
+    public function show(Favoraite $favoraite)
     {
         //
     }
@@ -43,7 +45,7 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(City $city)
+    public function edit(Favoraite $favoraite)
     {
         //
     }
@@ -51,7 +53,7 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCityRequest $request, City $city)
+    public function update(UpdateFavoraiteRequest $request, Favoraite $favoraite)
     {
         //
     }
@@ -59,7 +61,7 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(City $city)
+    public function destroy(Favoraite $favoraite)
     {
         //
     }

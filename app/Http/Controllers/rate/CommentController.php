@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\rate;
 
-use App\Models\Classification;
-use App\Http\Requests\StoreClassificationRequest;
-use App\Http\Requests\UpdateClassificationRequest;
+use App\Models\Comment;
+use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\UpdateCommentRequest;
+use App\Http\Controllers\Controller;
 
-class ClassificationController extends Controller
+
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ClassificationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClassificationRequest $request)
+    public function store(StoreCommentRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ClassificationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Classification $classification)
+    public function show(Comment $comment)
     {
         //
     }
@@ -43,7 +45,7 @@ class ClassificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Classification $classification)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -51,7 +53,7 @@ class ClassificationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClassificationRequest $request, Classification $classification)
+    public function update(UpdateCommentRequest $request, Comment $comment)
     {
         //
     }
@@ -59,7 +61,7 @@ class ClassificationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Classification $classification)
+    public function destroy(Comment $comment)
     {
         //
     }

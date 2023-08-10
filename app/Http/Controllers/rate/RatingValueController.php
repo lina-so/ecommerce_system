@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\rate;
 
-use App\Models\Replay;
-use App\Http\Requests\StoreReplayRequest;
-use App\Http\Requests\UpdateReplayRequest;
+use App\Models\RatingValue;
+use App\Http\Requests\StoreRatingValueRequest;
+use App\Http\Requests\UpdateRatingValueRequest;
+use App\Http\Controllers\Controller;
 
-class ReplayController extends Controller
+class RatingValueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class ReplayController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReplayRequest $request)
+    public function store(StoreRatingValueRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class ReplayController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Replay $replay)
+    public function show(RatingValue $ratingValue)
     {
         //
     }
@@ -43,7 +44,7 @@ class ReplayController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Replay $replay)
+    public function edit(RatingValue $ratingValue)
     {
         //
     }
@@ -51,7 +52,7 @@ class ReplayController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReplayRequest $request, Replay $replay)
+    public function update(UpdateRatingValueRequest $request, RatingValue $ratingValue)
     {
         //
     }
@@ -59,7 +60,7 @@ class ReplayController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Replay $replay)
+    public function destroy(RatingValue $ratingValue)
     {
         //
     }

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\RatingValue;
-use App\Http\Requests\StoreRatingValueRequest;
-use App\Http\Requests\UpdateRatingValueRequest;
 
-class RatingValueController extends Controller
+use App\Models\Classification;
+use App\Http\Requests\StoreClassificationRequest;
+use App\Http\Requests\UpdateClassificationRequest;
+use App\Http\Controllers\Controller;
+
+class ClassificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class RatingValueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRatingValueRequest $request)
+    public function store(StoreClassificationRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class RatingValueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RatingValue $ratingValue)
+    public function show(Classification $classification)
     {
         //
     }
@@ -43,7 +45,7 @@ class RatingValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RatingValue $ratingValue)
+    public function edit(Classification $classification)
     {
         //
     }
@@ -51,7 +53,7 @@ class RatingValueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRatingValueRequest $request, RatingValue $ratingValue)
+    public function update(UpdateClassificationRequest $request, Classification $classification)
     {
         //
     }
@@ -59,7 +61,7 @@ class RatingValueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RatingValue $ratingValue)
+    public function destroy(Classification $classification)
     {
         //
     }

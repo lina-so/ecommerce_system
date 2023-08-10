@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\Customer;
-use App\Http\Requests\StoreCustomerRequest;
-use App\Http\Requests\UpdateCustomerRequest;
 
-class CustomerController extends Controller
+use App\Models\Option;
+use App\Http\Requests\StoreOptionRequest;
+use App\Http\Requests\UpdateOptionRequest;
+use App\Http\Controllers\Controller;
+
+class OptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCustomerRequest $request)
+    public function store(StoreOptionRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(Option $option)
     {
         //
     }
@@ -43,7 +45,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit(Option $option)
     {
         //
     }
@@ -51,7 +53,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(UpdateOptionRequest $request, Option $option)
     {
         //
     }
@@ -59,7 +61,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(Option $option)
     {
         //
     }
