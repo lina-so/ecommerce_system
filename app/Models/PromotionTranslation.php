@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PromotionTranslation extends Model
 {
-    use HasFactory;
-    protected $fillable = ['name','description','promotion_id'];
-
-
+    public $timestamps = false;
+    protected $fillable = ['name','description'];
 }

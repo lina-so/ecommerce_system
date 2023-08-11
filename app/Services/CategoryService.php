@@ -29,16 +29,25 @@ class CategoryService
 
     public function store(array $data)
     {
-        $category = Category::create($data);
+        $category = new Category();
+        $category->save();
+
+        foreach (['en', 'ar'] as $locale) {
+            $category->translateOrNew($locale)->name = $data['name'][$locale];
+        }
+
+        $category->save();
         return $category;
-
-
     }
-
-    public function update(array $data, $id)
+    public function update(array $data,$categoryId)
     {
-        $category = Category::findOrFail($id);
-        $category->update($data);
+        $category = Category::findOrFail($categoryId);
+
+        foreach (['en', 'ar'] as $locale) {
+            $category->translateOrNew($locale)->name = $data['name'][$locale];
+        }
+
+        $category->save();
 
         return $category;
     }

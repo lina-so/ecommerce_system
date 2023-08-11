@@ -168,12 +168,26 @@
                                                                     <input type="hidden" class="form-control" id="id" name="id" value="{{$classification->id}}">
                                                                 </div>
 
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmaili"> name</label>
+                                                                    @foreach(config('translatable.locales') as $locale)
+                                                                    <div class="form-group">
+                                                                        <label for="name">{{ __('Name') }} ({{ $locale }})</label>
+                                                                        <input type="text" name="name[{{ $locale }}]" class="form-control" required>
+                                                                    </div>
+                                                                    @endforeach
 
-                                                                    <input type="text" class="form-control" id="name" name="name" value="" required>
+                                                                <div class="form-group">
+                                                                    <label>Category</label>
+                                                                    <select class="custom-select my-1 mr-sm-2" name="category_id">
+                                                                        <option selected disabled>Choose...</option>
+                                                                        @foreach($categories as $category)
+                                                                            <option style="color: black" value="{{$category->id}}">{{$category->name}} - {{ $category->id }}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
+
+
                                                             </div>
+
 
                                                             <div class="modal-footer">
                                                                 <button class="btn  btn-primary" type="submit">save</button>
@@ -213,12 +227,13 @@
 									{{csrf_field()}}
 
 									<div class="modal-body">
-										<div class="form-group">
-											<label for="exampleInputEmaili"> name</label>
 
-											<input type="text" class="form-control" id="name" name="name" required>
-										</div>
-
+                                            @foreach(config('translatable.locales') as $locale)
+                                            <div class="form-group">
+                                                <label for="name">{{ __('Name') }} ({{ $locale }})</label>
+                                                <input type="text" name="name[{{ $locale }}]" class="form-control" required>
+                                            </div>
+                                            @endforeach
 
                                         <div class="form-group">
                                             <label>Category</label>

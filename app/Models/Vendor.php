@@ -6,17 +6,15 @@ use App\Models\Product;
 use App\Models\Favoraite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Vendor extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Vendor extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory,Translatable;
 
-    protected $fillable = ['name'];
+    public $translatedAttributes = ['name'];
+    protected $fillable = ['id'];
 
-    // public function userable()
-    // {
-    //     return $this->morphMany(Person::class, 'userable');
-    // }
     public function products()
     {
         return $this->hasMany(Product::class);

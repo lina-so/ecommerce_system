@@ -5,11 +5,15 @@ namespace App\Models;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Country extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Country extends Model implements TranslatableContract
 {
-    use HasFactory;
-    protected $fillable = ['name'];
+    use HasFactory,Translatable;
+
+    public $translatedAttributes = ['name'];
+    protected $fillable = ['id'];
+
 
     public function locations()
     {

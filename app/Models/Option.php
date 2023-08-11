@@ -6,11 +6,15 @@ use App\Models\Product;
 use App\Models\OptionValue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Option extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Option extends Model implements TranslatableContract
 {
-    use HasFactory;
-    protected $fillable = ['name','product_id'];
+    use HasFactory,Translatable;
+
+    public $translatedAttributes = ['name'];
+
+    protected $fillable = ['product_id'];
 
     public function product()
     {

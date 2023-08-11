@@ -10,10 +10,13 @@ use App\Models\Favoraite;
 use App\Models\OrderProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Product extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Product extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory,Translatable;
+
+    public $translatedAttributes = ['name','description'];
 
     protected $fillable = ['quantity','price','classification_id','vendor_id','admin_id'];
 

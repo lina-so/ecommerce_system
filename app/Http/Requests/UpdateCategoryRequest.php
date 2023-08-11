@@ -14,15 +14,13 @@ class UpdateCategoryRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
+
     public function rules()
     {
         return [
-            'name' => 'nullable|min:3|max:255',
+            // 'name' => 'nullable|min:3|max:255',
+            'name' => 'nullable',
+
 
         ];
     }
@@ -30,8 +28,8 @@ class UpdateCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
-            'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
+            // 'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
+            // 'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
 
         ];
     }

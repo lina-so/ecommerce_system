@@ -35,21 +35,48 @@ class ClassificationService
     }
 
 
+    // public function store(array $data)
+    // {
+    //     $classification = Classification::create($data);
+    //     return $classification;
+
+
+    // }
+
+    // public function update(array $data, $id)
+    // {
+    //     $classification = Classification::findOrFail($id);
+    //     $classification->update($data);
+
+    //     return $classification;
+    // }
+
     public function store(array $data)
     {
-        $classification = Classification::create($data);
+        $classification = new Classification();
+        $classification->category_id  = $data['category_id'];
+        $classification->save();
+
+        foreach (['en', 'ar'] as $locale) {
+            $classification->translateOrNew($locale)->name = $data['name'][$locale];
+        }
+        $classification->save();
         return $classification;
-
-
     }
 
-    public function update(array $data, $id)
+    public function update(array $data,$classificationId)
     {
-        $classification = Classification::findOrFail($id);
-        $classification->update($data);
+        $classification = classification::findOrFail($classificationId);
+
+        foreach (['en', 'ar'] as $locale) {
+            $classification->translateOrNew($locale)->name = $data['name'][$locale];
+        }
+        $classification->category_id  = $data['category_id'];
+        $classification->save();
 
         return $classification;
     }
+
 
     public function destroy($id)
     {

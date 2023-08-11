@@ -37,8 +37,8 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        $data=$request->validated();
-        $category= $this->categoryService->store($data);
+        $data = $request->validated();
+        $category = $this->categoryService->store($data);
 
         return redirect()->route('category.create')->with('success','تم اضافة معلومات الصنف بنجاح');
 

@@ -5,12 +5,16 @@ namespace App\Models;
 use App\Models\Option;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class OptionValue extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class OptionValue extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory,Translatable;
 
-    protected $fillable = ['name','option_id'];
+    public $translatedAttributes = ['name'];
+
+    protected $fillable = ['option_id'];
+
 
     public function option()
     {

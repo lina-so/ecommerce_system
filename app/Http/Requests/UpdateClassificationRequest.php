@@ -22,7 +22,8 @@ class UpdateClassificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable|min:3|max:255',
+            // 'name' => 'nullable|min:3|max:255',
+            'name' => 'nullable',
             'category_id' => 'nullable|exists:categories,id',
         ];
     }
@@ -30,8 +31,8 @@ class UpdateClassificationRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
-            'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
+            // 'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
+            // 'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
             'category_id.exists' => 'الفئة المحددة غير صالحة',
         ];
     }

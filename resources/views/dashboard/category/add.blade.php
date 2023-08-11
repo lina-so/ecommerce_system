@@ -167,10 +167,13 @@
                                                                     <input type="hidden" class="form-control" id="id" name="id" value="{{$category->id}}">
                                                                 </div>
 
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmaili"> name</label>
-
-                                                                    <input type="text" class="form-control" id="name" name="name" value="" required>
+                                                                <div class="modal-body">
+                                                                    @foreach(config('translatable.locales') as $locale)
+                                                                    <div class="form-group">
+                                                                        <label for="name">{{ __('Name') }} ({{ $locale }})</label>
+                                                                        <input type="text" name="name[{{ $locale }}]" class="form-control" required>
+                                                                    </div>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
 
@@ -211,13 +214,15 @@
 								<form action="{{route('category.store')}}" method="post">
 									{{csrf_field()}}
 
+
+
 									<div class="modal-body">
-										<div class="form-group">
-											<label for="exampleInputEmaili"> name</label>
-
-											<input type="text" class="form-control" id="name" name="name" required>
-										</div>
-
+                                        @foreach(config('translatable.locales') as $locale)
+                                        <div class="form-group">
+                                            <label for="name">{{ __('Name') }} ({{ $locale }})</label>
+                                            <input type="text" name="name[{{ $locale }}]" class="form-control" required>
+                                        </div>
+                                        @endforeach
 									</div>
 
 
@@ -274,3 +279,6 @@
 <script src="{{URL::asset('assets/plugins/notify/js/notifit-custom.js')}}"></script>
 
 @endsection
+
+
+

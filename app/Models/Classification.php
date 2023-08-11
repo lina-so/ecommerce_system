@@ -6,12 +6,14 @@ use App\Models\Category;
 use App\Models\Promotion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Classification extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Classification extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory,Translatable;
 
-    protected $fillable = ['name','category_id'];
+    public $translatedAttributes = ['name'];
+    protected $fillable = ['category_id'];
 
     public function category()
     {
