@@ -18,12 +18,12 @@ class LocationFactory extends Factory
     public function definition(): array
     {
         return [
-                'locationable_id' => City::inRandomOrder()->first()?->id,
-                'locationable_type' => City::class,
-                'location_type' => 'country',
-                'address' => 'UAE street 1',
-                'longitude' => 2.3522,
-                'latitude' => 48.8566,
+            'locationable_id' => City::inRandomOrder()->first()?->id,
+            'locationable_type' => City::class,
+            'location_type' => 'country',
+            'address' => 'UAE street 1',
+            'longitude' => 2.3522,
+            'latitude' => 48.8566,
         ];
     }
 }

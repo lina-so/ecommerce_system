@@ -20,8 +20,8 @@ use App\Http\Controllers\product\ClassificationController;
 
 Route::get('/', function () {
     // return view('dashboard.empty');
-    return view('welcome');
-    // return view('website.index');
+    // return view('welcome');
+    return view('website.index');
 
 });
 
