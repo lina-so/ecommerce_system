@@ -18,6 +18,11 @@ class Classification extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function promotions()
     {
         return $this->belongsToMany(Promotion::class,'classification_promotion');

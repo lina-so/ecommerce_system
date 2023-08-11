@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\product\ProductController;
+use App\Http\Controllers\product\CategoryController;
+use App\Http\Controllers\product\ClassificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +20,8 @@ use App\Http\Controllers\dashboard\AdminController;
 
 Route::get('/', function () {
     // return view('dashboard.empty');
-    // return view('welcome');
-    return view('website.index');
+    return view('welcome');
+    // return view('website.index');
 
 });
 
@@ -31,8 +34,27 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+/**************************************************************************************************************/
 require __DIR__.'/auth.php';
+
+
+
+/***********************************************   website  **************************************************/
+
+/*=====================   category ==============*/
+Route::resource('category', CategoryController::class);
+
+/*=====================   classification ==============*/
+Route::resource('classification', ClassificationController::class);
+
+/*=====================   product ==============*/
+Route::resource('product', ProductController::class);
+
+// Route::get('/details/{id}', [App\Http\Controllers\product\ProductController::class, 'details'])->name('details');
+
+
+
+
 
 // * Route for dashboard
 Route::get('/{page}', [AdminController::class, 'index']);

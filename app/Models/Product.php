@@ -17,6 +17,11 @@ class Product extends Model
 
     protected $fillable = ['quantity','price','classification_id','vendor_id'];
 
+    public function classification()
+    {
+        return $this->belongsTo(Classification::class);
+    }
+
     public function options()
     {
         return $this->hasMany(Option::class);
