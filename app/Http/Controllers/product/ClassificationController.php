@@ -32,8 +32,10 @@ class ClassificationController extends Controller
         $data = $this->classificationService->create();
         $categories = $data['categories'];
         $classifications = $data['classifications'];
+        $options = $data['options'];
 
-        return view('dashboard.classification.add', compact('classifications','categories'));
+
+        return view('dashboard.classification.add', compact('classifications','categories','options'));
 
     }
 
@@ -44,8 +46,6 @@ class ClassificationController extends Controller
         $classifications = $this->classificationService->store($data);
 
         return redirect()->route('classification.create')->with('success','تم اضافة معلومات النوع بنجاح');
-
-
 
     }
 

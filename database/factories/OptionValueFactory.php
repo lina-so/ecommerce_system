@@ -18,8 +18,13 @@ class OptionValueFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
             'option_id' => Option::inRandomOrder()->first()?->id,
-        ];
+            'ar' => [
+                'name' => $this->faker->words(3, true),
+            ],
+            'en' => [
+                'name' => $this->faker->words(3, true),
+            ],
+         ];
     }
 }

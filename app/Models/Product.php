@@ -18,7 +18,7 @@ class Product extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name','description'];
 
-    protected $fillable = ['quantity','price','classification_id','vendor_id','admin_id'];
+    protected $fillable = ['id','quantity','price','classification_id','vendor_id','admin_id'];
 
     public function classification()
     {
@@ -38,11 +38,6 @@ class Product extends Model implements TranslatableContract
     public function vendor()
     {
         return $this->belongsTo(Vendor::class);
-    }
-
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class);
     }
 
     public function orderProduct()

@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,7 +26,18 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        App::setlocale(request('locale','en'));
+        // App::setlocale(request('locale','en'));
+
+        View::composer('*', function ($view) {
+            $products = Product::all();
+            $customer_id = Auth::id();
+
+            // $view->withMonth($products,$customer_id);
+            $view->with([
+                'products' => $products,
+                'customer_id' => $customer_id,
+            ]);
+        });
 
     }
 }

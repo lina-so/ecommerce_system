@@ -3,13 +3,23 @@
 namespace App\Http\Controllers\product;
 
 
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Customer;
 use App\Models\Favoraite;
+use App\Services\FavoraiteService;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFavoraiteRequest;
 use App\Http\Requests\UpdateFavoraiteRequest;
-use App\Http\Controllers\Controller;
 
 class FavoraiteController extends Controller
 {
+    public function __construct(private FavoraiteService $favoriteService)
+    {
+
+    }
+
     
     /*************************************************************************************************/
 
@@ -23,15 +33,16 @@ class FavoraiteController extends Controller
 
     public function create()
     {
-        //
+        
     }
 
 
     /*************************************************************************************************/
 
-    public function store(StoreFavoraiteRequest $request)
+   public function store($id, $customerId)
     {
-        //
+        $this->favoriteService->favoraite($id, $customerId);
+        return redirect()->back();
     }
 
 

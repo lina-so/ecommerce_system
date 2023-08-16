@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\product\OptionController;
 use App\Http\Controllers\dashboard\AdminController;
 use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\product\CategoryController;
+use App\Http\Controllers\product\FavoraiteController;
 use App\Http\Controllers\product\ClassificationController;
 
 /*
@@ -19,9 +22,11 @@ use App\Http\Controllers\product\ClassificationController;
 */
 
 Route::get('/', function () {
-    // return view('dashboard.empty');
+    // return view('dashboard.index');
     // return view('welcome');
-    return view('website.index');
+    // return view('web.index');
+    return view('web.pages.index');
+
 
 });
 
@@ -39,7 +44,7 @@ require __DIR__.'/auth.php';
 
 
 
-/***********************************************   website  **************************************************/
+/***********************************************   Dashboard  **************************************************/
 
 /*=====================   category ==============*/
 Route::resource('category', CategoryController::class);
@@ -50,11 +55,21 @@ Route::resource('classification', ClassificationController::class);
 /*=====================   product ==============*/
 Route::resource('product', ProductController::class);
 
+/*=====================   option ==============*/
+Route::resource('option', OptionController::class);
+
+
+/***********************************************   website  **************************************************/
+
+/*=====================   product details ==============*/
 // Route::get('/details/{id}', [App\Http\Controllers\product\ProductController::class, 'details'])->name('details');
 
 
+/*=====================  Localization  ==============*/
+Route::get("/locale", [LocalizationController::class, 'setLang'])->name('swap_language');
 
-
+/*=====================  favoraite  ==============*/
+Route::get("favoraite/{ID}/{customerId}", [FavoraiteController::class, 'store'])->name('favoraite');
 
 // * Route for dashboard
 Route::get('/{page}', [AdminController::class, 'index']);

@@ -2,21 +2,21 @@
 
 namespace App\Services;
 
+use App\Models\Option;
 use App\Models\Category;
 use App\Models\Classification;
+use App\Models\ClassificationTranslation;
 
 class ClassificationService
 {
     public function all()
     {
 
-        $classifications = Classification::all();
+        $classifications =Classification::with(['products'])->get();
         $categories = Category::all();
-        $products = Classification::with(['products'])->get();
 
         return [
             'classifications' => $classifications,
-            'products' => $products,
             'categories' => $categories,
 
         ];
@@ -25,42 +25,28 @@ class ClassificationService
     public function create()
     {
         $classifications = Classification::paginate(request()->page_size);
-        $categories = Category::all();
-
+        $categories= Category::distinct()->get();
+        $options = Option::all();
+        
         return [
             'classifications' => $classifications,
             'categories' => $categories,
-
+            'options' => $options,
         ];
     }
-
-
-    // public function store(array $data)
-    // {
-    //     $classification = Classification::create($data);
-    //     return $classification;
-
-
-    // }
-
-    // public function update(array $data, $id)
-    // {
-    //     $classification = Classification::findOrFail($id);
-    //     $classification->update($data);
-
-    //     return $classification;
-    // }
 
     public function store(array $data)
     {
         $classification = new Classification();
         $classification->category_id  = $data['category_id'];
-        $classification->save();
 
         foreach (['en', 'ar'] as $locale) {
             $classification->translateOrNew($locale)->name = $data['name'][$locale];
         }
         $classification->save();
+
+        $classification->options()->attach($data['option_id']);
+
         return $classification;
     }
 
@@ -72,6 +58,8 @@ class ClassificationService
             $classification->translateOrNew($locale)->name = $data['name'][$locale];
         }
         $classification->category_id  = $data['category_id'];
+        $classification->option_id  = $data['option_id'];
+
         $classification->save();
 
         return $classification;

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Models\Product;
 use App\Models\OptionValue;
+use App\Models\Classification;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+
 class Option extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
@@ -24,5 +26,9 @@ class Option extends Model implements TranslatableContract
     public function optionValue()
     {
         return $this->hasMany(OptionValue::class);
+    }
+    public function classifications()
+    {
+        return $this->belongsToMany(Classification::class,'classification_option');
     }
 }

@@ -18,8 +18,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'nullable|min:3|max:255',
-            'name' => 'nullable',
+            'name' => 'nullable|max:255',
 
 
         ];
@@ -28,8 +27,7 @@ class UpdateCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
-            // 'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
+            'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
 
         ];
     }

@@ -28,6 +28,16 @@ class Customer extends Model  implements TranslatableContract
         return $this->hasMany(Favoraite::class);
     }
 
+    // public function favoritable()
+    // {
+    //     return $this->morphMany(Favoraite::class, 'favoritable');
+    // }
+
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class,'customer_product');
+    }
 
     public function orders()
     {
@@ -35,8 +45,5 @@ class Customer extends Model  implements TranslatableContract
     }
 
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class,'customer_product');
-    }
+   
 }

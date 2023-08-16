@@ -334,10 +334,10 @@
                                         </select>
                                     </li>
                                     <li>
-                                        <form action="{{ URL::current() }}" method="get">
+                                        <form action="{{ route('swap_language','test') }}" method="get">
                                             <select name="locale" onchange="this.form.submit()">
-                                                <option value="en">{{ trans('app.english') }}</option>
-                                                <option value="ar">{{ trans('app.arabic') }}</option>
+                                                <option @selected(app()->getLocale() == 'en')  value="en">{{ trans('app.english') }}</option>
+                                                <option @selected(app()->getLocale() == 'ar')  value="ar">{{ trans('app.arabic') }}</option>
                                             </select>
                                         </form>
                                     </li>

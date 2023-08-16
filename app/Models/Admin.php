@@ -15,9 +15,5 @@ class Admin extends Model implements TranslatableContract
     protected $fillable = ['id'];
 
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
 
 }

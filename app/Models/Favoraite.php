@@ -10,7 +10,7 @@ class Favoraite extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id','product_name'];
+    protected $fillable = ['customer_id'];
 
     public function customer()
     {

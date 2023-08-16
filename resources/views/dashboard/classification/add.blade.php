@@ -185,6 +185,15 @@
                                                                     </select>
                                                                 </div>
 
+                                                                <div class="form-group">
+                                                                    <label>Option</label>
+                                                                    <select class="custom-select my-1 mr-sm-2" name="option_id[]" multiple>
+                                                                        <option selected disabled>Choose...</option>
+                                                                        @foreach($options as $option)
+                                                                            <option style="color: black" value="{{$option->id}}">{{$option->name}} </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
 
                                                             </div>
 
@@ -240,7 +249,17 @@
                                             <select class="custom-select my-1 mr-sm-2" name="category_id">
                                                 <option selected disabled>Choose...</option>
                                                 @foreach($categories as $category)
-                                                    <option style="color: black" value="{{$category->id}}">{{$category->name}} - {{ $category->id }}</option>
+                                                    <option style="color: black" value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                           <div class="form-group">
+                                            <label>Option</label>
+                                            <select class="custom-select my-1 mr-sm-2" name="option_id[]" multiple>
+                                                <option selected disabled>Choose...</option>
+                                                @foreach($options as $option)
+                                                    <option style="color: black" value="{{$option->id}}">{{$option->name}} </option>
                                                 @endforeach
                                             </select>
                                         </div>

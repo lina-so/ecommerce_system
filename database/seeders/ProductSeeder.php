@@ -15,13 +15,16 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         //
-        Product::factory()
-        ->hasAttached(
-            Customer::take(rand(2, 10))->inRandomOrder()->pluck('id')->toArray(),
-            [],
-            'customers'
-        )
-        ->count(20)
-        ->create();
+        // Product::factory()
+        // ->hasAttached(
+        //     Customer::take(rand(2, 10))->inRandomOrder()->pluck('id')->toArray(),
+        //     [],
+        //     'customers'
+        // )
+        // ->count(20)
+        // ->create();
+
+        Product::factory()->count(10)->create();
+
     }
 }

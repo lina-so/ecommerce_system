@@ -30,15 +30,16 @@ class CategoryService
     public function store(array $data)
     {
         $category = new Category();
-        $category->save();
 
         foreach (['en', 'ar'] as $locale) {
             $category->translateOrNew($locale)->name = $data['name'][$locale];
         }
 
         $category->save();
+
         return $category;
     }
+
     public function update(array $data,$categoryId)
     {
         $category = Category::findOrFail($categoryId);

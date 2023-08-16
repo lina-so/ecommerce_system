@@ -20,7 +20,6 @@ return new class extends Migration
             $table->double('price');
             $table->foreignIdFor(Classification::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(Vendor::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Admin::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });

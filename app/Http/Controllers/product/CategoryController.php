@@ -7,7 +7,6 @@ use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-
 class CategoryController extends Controller
 {
     public function __construct(private CategoryService $categoryService)

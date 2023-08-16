@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->mediumText('description')->nullable();
             $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('locale')->index();
+            $table->unique(['product_id', 'locale']);
             $table->timestamps();
         });
     }

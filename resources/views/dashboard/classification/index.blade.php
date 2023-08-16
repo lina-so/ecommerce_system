@@ -35,7 +35,7 @@
 						<div class="card mg-b-20">
 							<div class="card-header pb-0">
 								<a class="btn btn-outline-primary btn-md"  href="{{route('classification.create')}}"> Add Classification</a>
-							</div>
+                        </div>
 
 
 

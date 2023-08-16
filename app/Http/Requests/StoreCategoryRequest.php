@@ -15,10 +15,13 @@ class StoreCategoryRequest extends FormRequest
     }
 
 
-    public function rules()
+    public function rules(): array
     {
+        // dd(request());
         return [
-            'name' => 'required',
+            'name' => ['required','max:50'],
+
+
 
         ];
     }
@@ -26,9 +29,8 @@ class StoreCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'name.required' => 'الاسم مطلوب',
-            // 'name.min' => 'يجب أن يحتوي الاسم على الأقل على 3 أحرف',
-            // 'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
+            'name.required' => 'الاسم مطلوب',
+            'name.max' => 'يجب أن يحتوي الاسم على الأكثر 255 حرفًا',
 
         ];
     }
