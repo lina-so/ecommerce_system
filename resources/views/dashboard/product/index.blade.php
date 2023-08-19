@@ -14,151 +14,171 @@
 <link href="{{URL::asset('assets/plugins/custom-scroll/jquery.mCustomScrollbar.css')}}" rel="stylesheet">
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
-					<div class="my-auto">
-						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">Products</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Products list</span>
-						</div>
-					</div>
+            <!-- breadcrumb -->
+            <div class="breadcrumb-header justify-content-between">
+                <div class="my-auto">
+                    <div class="d-flex">
+                        <h4 class="content-title mb-0 my-auto">products</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ products list</span>
+                    </div>
+                </div>
 
-				</div>
-				<!-- breadcrumb -->
+            </div>
+            <!-- breadcrumb -->
 @endsection
 @section('content')
 
+
+        @if(session()->has('update'))
+        <script>
+        window.onload=function(){
+        notif({
+            msg:"product updated successfuly",
+             type:"success"
+        })
+        }
+        </script>
+
+        @endif
+
+
+        @if(session()->has('delete'))
+        <script>
+        window.onload=function(){
+        notif({
+            msg:"product deleted successfuly",
+            type:"success"
+        })
+        }
+        </script>
+
+        @endif
+
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+
 				<!-- row -->
 				<div class="row">
-
-
 					<div class="col-xl-12">
 						<div class="card mg-b-20">
 							<div class="card-header pb-0">
-								<a class="btn btn-outline-primary btn-md"  href="{{route('product.create')}}"> Add product</a>
-                    </div>
+                                <a class="btn btn-outline-primary btn-md"  href="{{route('product.create')}}"> Add product</a>
+							</div>
 
-                        {{-- start card body --}}
+							<div class="card-body">
+								<div class="table-responsive">
 
-                            <div class="card-body">
-								<div id="accordion" class="w-100 br-2 overflow-hidden">
-                                    <h4>-- Products --</h4>
+									<table id="example" class="table key-buttons text-md-nowrap">
+										<thead>
+                                            <tr>
+                                                <th class="border-bottom-0">#</th>
+                                                <th class="border-bottom-0">Name</th>
+                                                <th class="border-bottom-0">Quantity</th>
+                                                <th class="border-bottom-0">Price</th>
+                                                <th class="border-bottom-0">Classification</th>
+                                                <th class="border-bottom-0">Vendor</th>
+                                                <th class="border-bottom-0">Image</th>
+
+                                                <th class="border-bottom-0"></th>
+                                            </tr>
+										</thead>
+										<tbody>
 										@php
 										$i=0;
 										@endphp
-							  @foreach ($products as $product )
-								  @php
-								$i++;
-								@endphp
-								  	<div class="">
-										<div class="accor  bg-primary" id="headingThree3">
-											<h4 class="m-0 row">
-												<a href="#collapseThree{{$i}}" class="collapsed " data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-													{{$product->name}} <i class="si si-cursor-move ml-2"></i>
-                                                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" data-effect="effect-scale"
-                                                        title="تعديل"><i style="color: yellow"
-                                                        class="las la-edit"></i></a>
-												</a> 
+									@foreach($products as $product)
+										@php
+										$i++;
+										@endphp
+											<tr>
+
+												<td>{{$i}}</td>
+												<td>{{$product->name}}</td>
+												<td>{{$product->quantity}}</td>
+												<td>{{$product->price}}</td>
+												<td>{{$product->classification->name}}</td>
+												<td>{{$product->vendor->name}}</td>
+												{{-- <td><img src=" {{ $product->getMedia('*')[0]->getUrl()}}" alt="" ></td> --}}
+												{{-- <td><img src=" {{ $product->getMedia("*")->->getUrl()}}" alt="" ></td> --}}
+
+                                                {{-- "{{ asset('storage/5/img.jpg') }}" --}}
                                                 
-											</h4>
-                                          
-										</div>
-										<div id="collapseThree{{$i}}" class="collapse b-b0 bg-white" aria-labelledby="headingThree" data-parent="#accordion">
-											<div class="border p-3">
-												<table class="table mb-0 table-bordered border-top">
-													<thead>
-													  <tr>
-														<th>#</th>
-														<th>name</th>
-													  </tr>
-													</thead>
-													<tbody>
-													 <?php $i = 0; ?>
 
+                                                <td></td>
+												<td>
 
-                                                    @foreach ($product->options as $list_Sections)
+                                                    <a class=" btn btn-sm btn-warning " data-effect="effect-scale"
+                                                    href="{{ route('product.edit', ['product' => $product->id]) }}" title="تعديل"><i
+                                                    class="las la-edit"></i></a>
 
+                                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
+                                                    data-toggle="modal" href="#modaldemo6{{$product->id}}" title="حذف"><i
+                                                        class="las la-trash"></i></a>
 
-                                                        <tr>
-                                                            <?php $i++; ?>
-                                                            <td>{{ $i }}</td>
-                                                            <td>{{$list_Sections->name}}</td>
+                                                    <a class=" btn btn-sm btn-success"
+                                                    href="{{ route('addOption',$product->id) }}"
+                                                    title="show">add options</a>
+												</td>
+											</tr>
 
-                                                            <td>
-
-                                                                <a class="modal-effect btn btn-sm btn-warning " data-effect="effect-scale"
-                                                                    href="#modaldemo9{{$list_Sections->id}}"  data-toggle="modal"  title="تعديل"><i
-                                                                class="las la-edit"></i></a>
-
-                                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-toggle="modal" href="#modaldemo6" title="حذف"><i
-                                                                    class="las la-trash"></i></a>
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <!-- Edit modal -->
-                                                        <div class="modal" id="modaldemo9{{$list_Sections->id}}">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content modal-content-demo">
-                                                                    <div class="modal-header">
-                                                                        <h6 class="modal-title"> Edit option</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-                                                                    </div>
-                                                                    <form action="{{route('option.update',$list_Sections->id)}}" method="post" >
-                                                                            {{method_field('patch')}}
-                                                                            {{csrf_field()}}
-
-                                                                        <div class="modal-body">
-                                                                            <div class="form-group">
-                                                                                <input type="hidden" class="form-control" id="id" name="id" value="{{$list_Sections->id}}">
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                {{-- <div class="form-group">
-                                                                                    <label for="exampleInputEmaili"> name</label>
-
-                                                                                    <input type="text" class="form-control" id="name" name="name"  value="{{ $list_Sections->name }}" required>
-                                                                                </div>
-
-                                                                                <div class="form-group">
-                                                                                    <label > categorey</label>
-                                                                                    <select class="custom-select my-1 mr-sm-2" name="categorey_id">
-                                                                                        <option selected disabled>choose...</option>
-                                                                                        @foreach($categories as $categorey)
-                                                                                            <option style="color: black" value="{{$categorey->id}}">{{$categorey->name}}</option>
-                                                                                        @endforeach
-                                                                                    </select>
-
-                                                                                </div> --}}
-                                                                            </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button class="btn  btn-primary" type="submit">save</button>
-                                                                                <button class="btn  btn-secondary" data-dismiss="modal" type="button">cancel</button>
-                                                                            </div>
-                                                                    </form>
-                                                                </div>
+                                            
+                                            <!-- delete -->
+											<div class="modal" id="modaldemo6{{$product->id}}">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content modal-content-demo">
+														<div class="modal-header">
+															<h6 class="modal-title"> Delete product</h6><button aria-label="Close" class="close"
+																data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+														</div>
+														<form action="{{route('product.destroy',$product->id)}}" method="post" enctype="multipart/form-data">
+															{{ method_field('delete') }}
+															{{ csrf_field() }}
+                                                            <div class="form-group">
+                                                                <input type="hidden" class="form-control" id="id" name="id" value="{{$product->id}}">
                                                             </div>
-                                                        </div>
+															<div class="modal-body">
+																<p>? Are you sure you want to delete this product</p><br>
+																<input type="hidden" name="id" id="id" value="{{$product->id}}">
+                                                                {{-- <br> --}}
+																<input type="text" name="id" id="id" value="{{$product->name}}">
+                                                               : product Name
+															</div>
+															<div class="modal-footer">
 
-							                         @endforeach
-
-													</tbody>
-												</table>
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+																<button type="submit" class="btn btn-danger">save</button>
+															</div>
+													    </form>
+                                                    </div>
+												</div>
 											</div>
-										</div>
-									</div>
-							  @endforeach
+											@endforeach
+
+										</tbody>
+									</table>
+                                    @if(count($products)>=10)
+                                    <div class="pagination">
+                                        {{ $products->links() }}
+                                    </div>
+                                    @else
+                                    <div></div>
+                                    @endif
 								</div>
 							</div>
-                            {{-- end card body --}}
 						</div>
 					</div>
 				</div>
 
 
-
-
+					
 				<!-- row closed -->
 			</div>
 			<!-- Container closed -->
@@ -199,7 +219,7 @@
 
 
 
-	<!--Internal  Notify js -->
+<!--Internal  Notify js -->
 <script src="{{URL::asset('assets/plugins/notify/js/notifIt.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/notify/js/notifit-custom.js')}}"></script>
 

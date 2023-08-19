@@ -10,10 +10,10 @@
                     <img src="assets2/images/product-1/product-2.jpg" alt="product">
                 </div>
             </div>
-     
-            <a href="{{ route('favoraite', ['ID' => $product->id, 'customerId' => $customer_id]) }}" class="add-wishlist">
+
+            <a href="{{ route('favoraite', ['ID' => $product->id, 'customerId' => $customer_id]) }}" class="add-wishlist" onclick="addToFavoraite(event)">
                 <i></i>
-                <i class="mdi mdi-heart-outline"></i>
+                <i class="mdi mdi-heart-outline" id="heart-icon"></i>
             </a>
         </div>
         <div class="product-content text-center">

@@ -18,7 +18,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">Product</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Add Product</span>
+							<h4 class="content-title mb-0 my-auto">options</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Add options</span>
 						</div>
 					</div>
 
@@ -31,8 +31,7 @@
         <script>
         window.onload=function(){
         notif({
-        msg:"product added successfuly",
-
+        msg:"product option added successfuly",
         type:"success"
         })
         }
@@ -56,86 +55,28 @@
                             <div class="col-lg-12 margin-tb">
 
                             <form class="parsley-style-1" id="selectForm2" autocomplete="off" name="selectForm2"
-                                action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+                                action="{{route('addOption')}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="product" value="{{ $product?->id }}">
-                                <div class="">
-                                    <div class="row mg-b-20">
-                                        @foreach(config('translatable.locales') as $locale)
-                                            <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                                <label for="name">{{ __('Name') }} ({{ $locale }})</label>
-                                                <input type="text" name="name[{{ $locale }}]" class="form-control" value="{{ $product?->name }}" required>
-                                            </div>
-                                        @endforeach
-                                    </div>
-
-                                </div>
-
+                                <input type="hidden" name="product_id" value="{{ $id }}">            
                                 <div class="row mg-b-20">
                                     <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                        <label>quantity : <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-sm mg-b-20"
-                                            data-parsley-class-handler="#lnWrapper" name="quantity" required type="number" value="{{ $product?->quantity }}">
-                                    </div>
-
-                                    <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                        <label>price : <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-sm mg-b-20"
-                                            data-parsley-class-handler="#lnWrapper" name="price" required type="number" step="0.01" value="{{ $product?->price }}">
-                                    </div>
-
-                                </div>
-
-                                <div class="row mg-b-20">
-                                    <div class="parsley-input col-md-12 mg-t-20 mg-md-t-0" >
-                                        @foreach (config('translatable.locales') as $locale)
-                                            <label for="description_{{ $locale }}"> {{ __('description') }}  ({{ $locale }}): <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="description[{{ $locale }}]" id="exampleFormControlTextarea1" rows="3" value="{{ $product?->description }}"></textarea>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="row mg-b-20">
-                                    <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                        <label > vendor</label>
-                                        <select data-placeholder="select vendor"  class="custom-select my-1 mr-sm-2" name="vendor_id" value="{{ $product?->vendor_id }}">
-                                            <option selected disabled>choose...</option>
-                                            @foreach($vendors as $vendor)
-                                                <option  value="{{$vendor->id}}">{{$vendor->name}}</option>
+                                        <label for="option_id">{{__('app.option')}} :</label>
+                                        <select class="custom-select mr-sm-2" name="option_id">
+                                            <option selected disabled>{{__('app.choose')}}...</option>
+                                            @foreach($options as $option)
+                                                <option  style="color: black" value="{{ $option->id }}">{{ $option->name }}</option>
                                             @endforeach
                                         </select>
-
-                                    </div>
+                                     </div>
 
                                     <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                        <label > classification</label>
-                                        <select data-placeholder="select classification"  class="custom-select my-1 mr-sm-2" name="classification_id" value="{{ $product?->classification_id }}">
-                                            <option selected disabled>choose...</option>
-                                            @foreach($classifications as $classification)
-                                                <option  value="{{$classification->id}}">{{$classification->name}}</option>
-                                            @endforeach
+                                        <label for="Classroom_id">{{__('app.option_value')}} : <span class="text-danger">*</span></label>
+                                        <select class="custom-select mr-sm-2" name="option_value_id">
+    
                                         </select>
-
                                     </div>
 
-            
                                 </div>
-
-
-                                <div class="row mg-b-20">
-                                    <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" >
-                                        <p class="text-danger">* صيغة المرفق png, jpeg ,.jpg </p>
-                                        <h5 class="card-title">Images</h5>
-                
-                                        <div class="col-sm-12 col-md-12">
-                                            <input type="file" name="img[]" class="dropify" accept="image/*" multiple
-                                                data-height="70" />
-                                        </div><br>
-                                   </div>
-
-
-                                </div>
-
 
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                     <button class="btn btn-main-primary pd-x-20" type="submit">save</button>
@@ -151,8 +92,34 @@
 		</div>
 		<!-- main-content closed -->
 @endsection
-@section('js')
-<!-- Internal Data tables -->
+@section('js')    
+    
+    <script>
+        $(document).ready(function () {
+            $('select[name="option_id"]').on('change', function () {
+                var option_id = $(this).val();
+                if (option_id) {
+                    $.ajax({
+                        url: "{{ URL::to('get_option_value') }}/" + option_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $('select[name="option_value_id"]').empty();
+                            $.each(data, function (index, option_value) {
+                        // $('select[name="option_value_id"]').append('<option selected disabled>{{__('app.choose')}}...</option>');
+                        $('select[name="option_value_id"]').append('<option value="' + option_value.id + '">' + option_value.name + '</option>');
+                         });
+                        },
+                    });
+                }
+                else {
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+    </script>
+
+    <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></>
     <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
     <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
@@ -188,4 +155,9 @@
         <!--Internal  Notify js -->
     <script src="{{URL::asset('assets/plugins/notify/js/notifIt.js')}}"></script>
     <script src="{{URL::asset('assets/plugins/notify/js/notifit-custom.js')}}"></script>
+
 @endsection
+
+
+
+

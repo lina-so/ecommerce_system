@@ -13,7 +13,9 @@ class ProductService
 {
     public function all()
     {
-        $products = Product::with(['options'])->get();
+        // $products = Product::with(['options'])->get();
+        
+        $products = Product::paginate(request()->page_size);
         return [
             'products' => $products,
 
@@ -62,6 +64,12 @@ class ProductService
         }
 
         $product->save();
+
+        if (isset($data['img'])) {
+            foreach ($data['img'] as $image) {
+                $product->addMedia($image)->toMediaCollection('images');
+            }
+        }
         return $product;
     }
 

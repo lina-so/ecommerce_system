@@ -62,5 +62,9 @@
 
     <!--====== Main js ======-->
     <script src="assets2/js/main.js"></script>
+
+
+    <!--====== e-store js ======-->
+    <script src="assets2/js/e_store.js"></script>
  @endsection
 

@@ -30,9 +30,7 @@ class StoreProductRequest extends FormRequest
             'description' => ['required_without:product'],
             'classification_id' => ['required_without:product','exists:classifications,id'],
             'vendor_id' => ['required_without:product','exists:vendors,id'],
-
-
-            // 'profile' => ['required_without:product', 'image'],
+            'img' => ['required_without:product'],
 
             // 'quantity' => 'required',
             // 'price' => 'required',

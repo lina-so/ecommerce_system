@@ -8,6 +8,7 @@ use App\Http\Controllers\dashboard\AdminController;
 use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\product\CategoryController;
 use App\Http\Controllers\product\FavoraiteController;
+use App\Http\Controllers\product\OptionValueController;
 use App\Http\Controllers\product\ClassificationController;
 
 /*
@@ -22,12 +23,7 @@ use App\Http\Controllers\product\ClassificationController;
 */
 
 Route::get('/', function () {
-    // return view('dashboard.index');
-    // return view('welcome');
-    // return view('web.index');
     return view('web.pages.index');
-
-
 });
 
 Route::get('/dashboard', function () {
@@ -58,18 +54,32 @@ Route::resource('product', ProductController::class);
 /*=====================   option ==============*/
 Route::resource('option', OptionController::class);
 
+/*=====================   option value==============*/
+Route::resource('option_value', OptionValueController::class);
 
 /***********************************************   website  **************************************************/
 
 /*=====================   product details ==============*/
 // Route::get('/details/{id}', [App\Http\Controllers\product\ProductController::class, 'details'])->name('details');
 
+/*=====================   Add option   ==============*/
+
+Route::get('product_options/{id}', [OptionValueController::class, 'getOption'])->name('getOption');
+
+Route::get('/get_option_value/{id}',[OptionValueController::class,'getOptionValue'])->name('get_option_value');
+
+Route::post('add_option',[OptionValueController::class,'addOption'])->name('addOption');
+
+/*=====================  favoraite  ==============*/
+// Route::get("favoraite/{ID}/{customerId}", [FavoraiteController::class, 'store'])->name('favoraite')->middleware('auth');
+Route::get("favoraite/{ID}/{customerId}", [FavoraiteController::class, 'store'])->name('favoraite');
+
+
 
 /*=====================  Localization  ==============*/
 Route::get("/locale", [LocalizationController::class, 'setLang'])->name('swap_language');
 
-/*=====================  favoraite  ==============*/
-Route::get("favoraite/{ID}/{customerId}", [FavoraiteController::class, 'store'])->name('favoraite');
+
 
 // * Route for dashboard
 Route::get('/{page}', [AdminController::class, 'index']);
