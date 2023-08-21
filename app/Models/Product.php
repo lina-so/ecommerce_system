@@ -7,18 +7,22 @@ use App\Models\Option;
 use App\Models\Vendor;
 use App\Models\Customer;
 use App\Models\Favoraite;
+use App\Models\OptionValue;
 use App\Models\OrderProduct;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
-class Product extends Model implements TranslatableContract
+
+class Product extends Model implements TranslatableContract , HasMedia
 {
-    use HasFactory,Translatable;
+    use HasFactory,Translatable,InteractsWithMedia;
 
     public $translatedAttributes = ['name','description'];
 
-    protected $fillable = ['id','quantity','price','classification_id','vendor_id','admin_id'];
+    protected $fillable = ['id','quantity','price','classification_id','vendor_id','admin_id','img'];
 
     public function classification()
     {
@@ -28,6 +32,11 @@ class Product extends Model implements TranslatableContract
     public function options()
     {
         return $this->hasMany(Option::class);
+    }
+    
+    public function optionValues()
+    {
+        return $this->belongsToMany(OptionValue::class, 'option_value_product');
     }
 
     public function customers()
@@ -48,6 +57,12 @@ class Product extends Model implements TranslatableContract
     public function favoritable()
     {
         return $this->morphMany(Favoraite::class, 'favoritable');
+    }
+
+    public function MediaCollections(): void
+    {
+        $this->addMediaCollection('images')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png','image/jpeg']) ; // تحديد انواع الصور المسموحة 
     }
 
 

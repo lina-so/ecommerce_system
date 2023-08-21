@@ -1,4 +1,4 @@
-@extends('layouts_Dashboard.master2')
+@extends('layouts_dashboard.master2')
 @section('css')
 <!-- Sidemenu-respoansive-tabs css -->
 <link href="{{URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css')}}" rel="stylesheet">
@@ -23,30 +23,30 @@
 								<div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
 									<div class="card-sigin">
 										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Va<span>le</span>x</h1></div>
-										<div class="card-sigin">
-											<div class="main-signup-header">
-												<h2>Welcome back!</h2>
-												<h5 class="font-weight-semibold mb-4">Please sign in to continue.</h5>
-												<form action="#">
-													<div class="form-group">
-														<label>Email</label> <input class="form-control" placeholder="Enter your email" type="text">
-													</div>
-													<div class="form-group">
-														<label>Password</label> <input class="form-control" placeholder="Enter your password" type="password">
-													</div><button class="btn btn-main-primary btn-block">Sign In</button>
-													<div class="row row-xs">
-														<div class="col-sm-6">
-															<button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-														</div>
-														<div class="col-sm-6 mg-t-10 mg-sm-t-0">
-															<button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-														</div>
-													</div>
-												</form>
-												<div class="main-signin-footer mt-5">
-													<p><a href="">Forgot password?</a></p>
-													<p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
+										<div class="main-signup-header">
+											<h2 class="text-primary">Get Started</h2>
+											<h5 class="font-weight-normal mb-4">It's free to signup and only takes a minute.</h5>
+											<form action="#">
+												<div class="form-group">
+													<label>Firstname &amp; Lastname</label> <input class="form-control" placeholder="Enter your firstname and lastname" type="text">
 												</div>
+												<div class="form-group">
+													<label>Email</label> <input class="form-control" placeholder="Enter your email" type="text">
+												</div>
+												<div class="form-group">
+													<label>Password</label> <input class="form-control" placeholder="Enter your password" type="password">
+												</div><button class="btn btn-main-primary btn-block">Create Account</button>
+												<div class="row row-xs">
+													<div class="col-sm-6">
+														<button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
+													</div>
+													<div class="col-sm-6 mg-t-10 mg-sm-t-0">
+														<button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
+													</div>
+												</div>
+											</form>
+											<div class="main-signup-footer mt-5">
+												<p>Already have an account? <a href="{{ url('/' . $page='signin') }}">Sign In</a></p>
 											</div>
 										</div>
 									</div>

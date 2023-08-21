@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('locale')->index();
-            $table->foreignIdFor(OptionValue::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(OptionValue::class);
             $table->unique(['option_Value_id', 'locale']);
             $table->timestamps();
         });

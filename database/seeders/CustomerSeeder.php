@@ -25,42 +25,42 @@ class CustomerSeeder extends Seeder
         // ->create();
 
 
-        $data = [
-            [
-                'name' => [
-                    'en' => 'Rama',
-                    'ar' => 'راما',
-                ],
-                'locale' => [
-                    'en',
-                    'ar',
-                ],
-                'customer_id' => 2,
-            ],
-            [
-                'name' => [
-                    'en' => 'ranim',
-                    'ar' => 'رنيم',
-                ],
-                'locale' => [
-                    'en',
-                    'ar',
-                ],
-                'customer_id' => 2,
-            ],
-        ];
+        // $data = [
+        //     [
+        //         'name' => [
+        //             'en' => 'Rama',
+        //             'ar' => 'راما',
+        //         ],
+        //         'locale' => [
+        //             'en',
+        //             'ar',
+        //         ],
+        //         'customer_id' => 2,
+        //     ],
+        //     [
+        //         'name' => [
+        //             'en' => 'ranim',
+        //             'ar' => 'رنيم',
+        //         ],
+        //         'locale' => [
+        //             'en',
+        //             'ar',
+        //         ],
+        //         'customer_id' => 2,
+        //     ],
+        // ];
 
-        foreach ($data as $item) {
-            $customer = Customer::create();
+        // foreach ($data as $item) {
+        //     $customer = Customer::create();
 
-            foreach ($item['name'] as $locale => $name) {
-                $translation = new CustomerTranslation();
-                $translation->setTable('customer_translations');
-                $translation->setAttribute('locale', $locale);
-                $translation->setAttribute('name', $name);
-                $customer->translations()->save($translation);
-            }
-        }
+        //     foreach ($item['name'] as $locale => $name) {
+        //         $translation = new CustomerTranslation();
+        //         $translation->setTable('customer_translations');
+        //         $translation->setAttribute('locale', $locale);
+        //         $translation->setAttribute('name', $name);
+        //         $customer->translations()->save($translation);
+        //     }
+        // }
 
     }
 }

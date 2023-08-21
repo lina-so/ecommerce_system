@@ -11,9 +11,25 @@ class Admin extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
 
+    protected $guard = 'admin';
+    
     public $translatedAttributes = ['name'];
     protected $fillable = ['id'];
 
+    public function vendorPersonal(){
+
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
+
+    public function vendorBusiness(){
+        
+        return $this->belongsTo(VendorBusinessDetail::class, 'vendor_id');
+    }
+
+    public function vendorBank(){
+        
+        return $this->belongsTo(VendorBankDetail::class, 'vendor_id');
+    }
 
 
 }

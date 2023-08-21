@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         // App::setlocale(request('locale','en'));
 
         View::composer('*', function ($view) {
-            $products = Product::all();
+            $products = Product::paginate(request()->page_size);
             $customer_id = Auth::id();
 
             // $view->withMonth($products,$customer_id);

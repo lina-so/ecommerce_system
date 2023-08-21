@@ -182,7 +182,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Media' => \Spatie\MediaLibrary\MediaCollections\Models\Media::class,
     ])->toArray(),
 
 ];

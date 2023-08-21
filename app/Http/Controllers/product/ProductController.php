@@ -84,11 +84,15 @@ class ProductController extends Controller
         //
     }
 
+    /*************************************************************************************************/
+
+  
 
     /*************************************************************************************************/
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = $this->productService->destroy($id);
+        return back()->with('delete','تم حذف معلومات المنتج بنجاح');
     }
 }

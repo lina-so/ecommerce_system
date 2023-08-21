@@ -2,17 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Customer;
-use App\Models\Favoraite;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
-class Customer extends Model  implements TranslatableContract
+use Illuminate\Database\Eloquent\Model;
+
+class Customer extends Model
 {
-    use HasFactory,Translatable;
+    use HasFactory;
 
     public $translatedAttributes = ['name'];
     protected $fillable = ['id'];
@@ -43,7 +38,4 @@ class Customer extends Model  implements TranslatableContract
     {
         return $this->hasMany(Order::class);
     }
-
-
-   
 }

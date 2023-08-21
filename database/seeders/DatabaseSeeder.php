@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
             // LocationSeeder::class,
             // PromotionSeeder::class,
             OptionValueSeeder::class,
+            VendorBankSeeder::class,
+            VendorBusinessSeeder::class,
 
 
 

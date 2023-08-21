@@ -41,7 +41,7 @@
 
                             <div class="card-body">
 								<div id="accordion" class="w-100 br-2 overflow-hidden">
-                                    <h4>-- Products --</h4>
+                                    <h5>-- Products --</h5>
 										@php
 										$i=0;
 										@endphp
@@ -63,6 +63,8 @@
                                           
 										</div>
 										<div id="collapseThree{{$i}}" class="collapse b-b0 bg-white" aria-labelledby="headingThree" data-parent="#accordion">
+                                           <h6>-- options --</h6>
+
 											<div class="border p-3">
 												<table class="table mb-0 table-bordered border-top">
 													<thead>
